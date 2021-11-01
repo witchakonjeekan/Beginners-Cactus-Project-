@@ -1,0 +1,7 @@
+0 Astrophytum
+1 Coryphantha
+2 Gymnocalycium
+3 Lophophora
+4 Mammillaria
+5 Othercactus
+6 No a cactus

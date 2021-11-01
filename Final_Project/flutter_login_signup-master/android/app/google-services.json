@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "393968850770",
+    "project_id": "finalcactus",
+    "storage_bucket": "finalcactus.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:393968850770:android:0bbea067131c85f6e6cc8b",
+        "android_client_info": {
+          "package_name": "thealphamerc.flutter_login_signup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "393968850770-89645ckn08ljckqhn2n7i57kph8kf13n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABSqeAEbU2WB0kECYB-QDlis86VGkRsnE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "393968850770-89645ckn08ljckqhn2n7i57kph8kf13n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

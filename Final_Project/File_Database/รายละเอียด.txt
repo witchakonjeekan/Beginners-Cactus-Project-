@@ -1,0 +1,8 @@
+ไฟล์ cactus_project เป็นไฟล์  Database เสมือนภายในเครื่องซึ่งประกอบไปด้วย
+1. user - ผู้ใช้งาน
+2. shop - ร้านค้า
+3. report - การระงับ
+4. favorites - การติดตาม 
+5. detailcactus	- รายละเอียดแคคตัสในร้าน
+
+*นำไฟล์ cactus_project.SQL ไป import ใน phpmyadmin เพื่อใช้งาน Database

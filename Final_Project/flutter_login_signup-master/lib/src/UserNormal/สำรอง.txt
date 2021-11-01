@@ -1,0 +1,188 @@
+// // import 'package:flutter/cupertino.dart';
+
+// import 'package:flutter/material.dart';
+// import 'package:flutter_login_signup/src/SearchPage/SelectSearch.dart';
+// import 'package:flutter_login_signup/src/ViewShop/ShowShopAll.dart';
+// import 'package:flutter_login_signup/src/Widget/backgroudlogre.dart';
+// import 'package:flutter_login_signup/src/SearchPage/SearchPage.dart';
+// import 'package:flutter_login_signup/src/loginPage.dart';
+
+// import 'package:fluttertoast/fluttertoast.dart';
+
+// import 'package:shared_preferences/shared_preferences.dart';
+
+// class HomeScreen extends StatefulWidget {
+//   @override
+//   _HomeScreenState createState() => _HomeScreenState();
+// }
+
+// class _HomeScreenState extends State<HomeScreen> {
+//   String nameUser;
+//   String statusUser;
+//   String profileimage;
+//   String host;
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     findUser();
+//   }
+
+
+//   Future<Null> findUser() async {
+//     SharedPreferences preferences = await SharedPreferences.getInstance();
+//     setState(() {
+//       nameUser = preferences.getString('Username');
+//       statusUser = preferences.getString('Status');
+//       profileimage = preferences.getString('Image_Profile');
+//     });
+//     host = 'http://192.168.56.1$profileimage';
+//   }
+
+//   Future<Null> SingoutUser() async {
+//     SharedPreferences preferences = await SharedPreferences.getInstance();
+//     preferences.clear();
+//     Fluttertoast.showToast(
+//           msg: "Logout Normal Succes",
+//           toastLength: Toast.LENGTH_SHORT,
+//           gravity: ToastGravity.CENTER,
+//           timeInSecForIosWeb: 1,
+//           backgroundColor: Colors.red,
+//           textColor: Colors.white,
+//           fontSize: 16.0);
+//     Navigator.push(
+//         context, MaterialPageRoute(builder: (context) => LoginPage()));
+//     // ล้าง Acccout ที่เข้ามาให้หมด// เมื่อทำการล้าง Acccout แล้วจะทำการปิดแอปพลิเคชั่น
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     // to get size กำหนด size
+//     var size = MediaQuery.of(context).size;
+
+//     return Scaffold(
+//       body: Stack(
+//         children: <Widget>[
+//           Positioned(child: BackgroundLogin()),
+
+//           //สร้างหน้าที่ไม่ชนกับขอบบนโทรศัพท์
+//           SafeArea(
+//             child: Padding(
+//               padding: EdgeInsets.all(16.0),
+//               child: Column(
+//                 children: <Widget>[
+//                   Container(
+//                     height: 70,
+//                     margin: EdgeInsets.only(bottom: 20),
+
+//                     //สร้าง Row
+//                     child: Row(
+//                       crossAxisAlignment: CrossAxisAlignment.start,
+//                       mainAxisAlignment: MainAxisAlignment.center,
+//                       children: <Widget>[
+//                         CircleAvatar(
+//                           radius: 32,
+//                           // backgroundImage: NetworkImage("http://192.168.56.1/Final_Project/flutter_login_signup-master/lib/src/Connection_DB/ImageUser/'$profileimage'"),
+//                           backgroundImage: NetworkImage('$host'),
+//                         ),
+//                         SizedBox(
+//                           width: 16,
+//                         ),
+//                         Column(
+//                           mainAxisAlignment: MainAxisAlignment.center,
+//                           crossAxisAlignment: CrossAxisAlignment.start,
+//                           children: <Widget>[
+//                             // // Session
+//                             Text(
+//                               '$nameUser' == null ? 'Error' : '$nameUser',
+//                               style:
+//                                   TextStyle(color: Colors.black, fontSize: 28),
+//                             ),
+//                             Text(
+//                               '$statusUser',
+//                               style: TextStyle(
+//                                 fontSize: 19,
+//                                 color: Colors.black,
+//                               ),
+//                             )
+//                           ],
+//                         )
+//                       ],
+//                     ),
+//                   ),
+//                   Expanded(
+//                     child: GridView.count(
+//                       mainAxisSpacing: 10,
+//                       crossAxisSpacing: 10,
+//                       primary: false,
+//                       crossAxisCount: 2,
+//                       children: <Widget>[
+//                         Card(
+//                           shape: RoundedRectangleBorder(
+//                               borderRadius: BorderRadius.circular(7)),
+//                           elevation: 4,
+//                           child: InkWell(
+//                             onTap: () => Navigator.push(
+//                                 context,
+//                                 MaterialPageRoute(
+//                                     builder: (context) => MenuAllSearch())),
+//                             child: Image.asset(
+//                               'img/01_logo.png', //ไปหน้าค้นหา
+//                               width: 200, height: 200,
+//                             ),
+//                           ),
+//                         ),
+//                         Card(
+//                           shape: RoundedRectangleBorder(
+//                               borderRadius: BorderRadius.circular(7)),
+//                           elevation: 4,
+//                           child: InkWell(
+//                             onTap: () => Navigator.push(
+//                                 context,
+//                                 MaterialPageRoute(
+//                                     builder: (context) => ShopShow())),
+//                             child: Image.asset(
+//                               'img/02_logo.png', //ร้านค้า
+//                               width: 200, height: 200,
+//                             ),
+//                           ),
+//                         ),
+//                         Card(
+//                           shape: RoundedRectangleBorder(
+//                               borderRadius: BorderRadius.circular(7)),
+//                           elevation: 4,
+//                           child: InkWell(
+//                             onTap: () => Navigator.push(
+//                                 context,
+//                                 MaterialPageRoute(
+//                                     builder: (context) => SeaechPage())),
+//                             child: Image.asset(
+//                               'img/04_logo.png', //chat
+//                               width: 200,
+//                             ),
+//                           ),
+//                         ),
+//                         Card(
+//                           shape: RoundedRectangleBorder(
+//                               borderRadius: BorderRadius.circular(7)),
+//                           elevation: 4,
+//                           child: InkWell(
+//                             onTap: () => SingoutUser(),
+//                             child: Image.asset(
+//                               'img/031_logo.png', //logout
+//                               width: 200,
+//                             ),
+//                           ),
+//                         ),
+//                       ],
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
