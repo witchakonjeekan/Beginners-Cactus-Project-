@@ -83,21 +83,19 @@ class _HomeScreenShopState extends State<HomeScreenShop> {
       }
     });
 
-    String urlcheckshop = 
-    '${MyUrlpath().urlpath}/Final_Project/flutter_login_signup-master/lib/src/Connection_DB/getShopwhereUser.php?isAdd=true&ID=$iduser';
-    await Dio().get(urlcheckshop).then((value) {
-      if (value.toString() != 'null') {
-        var result = json.decode(value.data);
-        for (var map in result) {
-          ShopModel shop = ShopModel.fromJson(map);
-          setState(() {
-            checkshop = shop.status;
-          });
-        }
-      } else {
-        checkshop = null;
-      }
-    });
+    // String urlcheckshop =
+    // '${MyUrlpath().urlpath}/Final_Project/flutter_login_signup-master/lib/src/Connection_DB/getShopwhereUser.php?isAdd=true&ID=$iduser';
+    // await Dio().get(urlcheckshop).then((value) {
+    //   if (value.toString() != 'null') {
+    //     var result = json.decode(value.data);
+    //     for (var map in result) {
+    //       ShopModel shop = ShopModel.fromJson(map);
+    //       setState(() {
+    //         checkshop = shop.status;
+    //       });
+    //     }
+    //   }
+    // });
   }
 
   Future<void> prefer() async {
@@ -126,21 +124,27 @@ class _HomeScreenShopState extends State<HomeScreenShop> {
   }
 
   Future<Null> checkstatus() async {
-  if (checkshop == null) {
+    String checkshopstatus;
+    String urlcheckshop =
+        '${MyUrlpath().urlpath}/Final_Project/flutter_login_signup-master/lib/src/Connection_DB/getShopwhereUser.php?isAdd=true&ID=$iduser';
+    await Dio().get(urlcheckshop).then((value) {
+      if (value.toString() != 'null') {
+        var result = json.decode(value.data);
+        for (var map in result) {
+          ShopModel shop = ShopModel.fromJson(map);
+          setState(() {
+            checkshopstatus = shop.status;
+          });
+        }
+      }
+    });
+     if (checkshopstatus == 'Shop') {
       Navigator.push(
-        context,
-        MaterialPageRoute(
-        builder: (context) => PageCheckShops()));
-    } else if (checkshop == 'Shop') {
-      Navigator.push(
-       context,
-         MaterialPageRoute(
-         builder: (context) => PageCheckShops()));
+          context, MaterialPageRoute(builder: (context) => PageCheckShops()));
     } else {
       normalDialog(context, 'ร้านค้าของท่านถูกระงับจากพฤติกรรมที่ไม่เหมาะสม');
     }
   }
-
 
   Future<Null> aboutNotification() async {
     if (Platform.isAndroid) {
@@ -262,13 +266,12 @@ class _HomeScreenShopState extends State<HomeScreenShop> {
                                 borderRadius: BorderRadius.circular(7)),
                             elevation: 4,
                             child: InkWell(
-                              onTap: () =>
-                              checkstatus() 
+                              onTap: () => checkstatus()
                               // Navigator.push(
                               //     context,
                               //     MaterialPageRoute(
                               //         builder: (context) => PageCheckShops()))
-                                      ,
+                              ,
                               child: Image.asset(
                                 'img/setshop01name.png', //setting shop
                                 width: 200,
@@ -320,8 +323,6 @@ class _HomeScreenShopState extends State<HomeScreenShop> {
       ),
     );
   }
-
-
 
   Widget detailuser() {
     return Row(
