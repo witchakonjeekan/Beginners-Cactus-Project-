@@ -8,3 +8,5 @@ Final-Project
 ## เป็น Project ในรูป Mobile Application เพื่อศึกษาและทดลองการจำแนกสายพันธุ์แคคตัสด้วยวิธีการเรียนรู้เชิงลึกและรวบรวมข้อมูลแคคตัส 5 สายพันธุ์หลัก คือ Astrophytum Coryphantha Gymnocalycium Lophophora Mammillaria
 
 
+#eiei
+
